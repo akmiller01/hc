@@ -1,7 +1,8 @@
 from django.contrib import admin
 from blog.models import Post
+from adminfiles.admin import FilePickerAdmin
 
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(FilePickerAdmin):
     #fields display on change list
     list_display = ['title','description']
     #fields to filter the change list with
@@ -14,5 +15,6 @@ class PostAdmin(admin.ModelAdmin):
     save_on_top = True
     #prepopulate the slug from the title
     prepopulated_fields = {"slug":("title",)}
+    adminfiles_fields = ('content',)
 
 admin.site.register(Post,PostAdmin)
