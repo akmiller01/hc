@@ -1,5 +1,6 @@
 Django==1.8.2
 django-adminfiles==1.0.1
+django-writingfield==1.1.8
 djangoembed==0.1.1
 flickrapi==2.0
 gdata==2.0.18

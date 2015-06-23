@@ -1,5 +1,6 @@
 from django.contrib import admin
 from blog.models import Post
+from blog.forms import PostForm
 from adminfiles.admin import FilePickerAdmin
 
 class PostAdmin(FilePickerAdmin):
@@ -16,5 +17,6 @@ class PostAdmin(FilePickerAdmin):
     #prepopulate the slug from the title
     prepopulated_fields = {"slug":("title",)}
     adminfiles_fields = ('content',)
+    form = PostForm
 
 admin.site.register(Post,PostAdmin)

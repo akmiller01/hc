@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'blog',
     'adminfiles',
-    'sorl.thumbnail'
+    'sorl.thumbnail',
+    'writingfield'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,6 +49,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    # writing field must come BEFORE MessageMiddleware
+    'writingfield.middleware.WritingFieldMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -102,11 +105,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = ( os.path.join('static'),
+STATICFILES_DIRS = ( os.path.join('static','blog'),
                     )
 
 MEDIA_URL = '/media/'
