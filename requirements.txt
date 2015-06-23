@@ -1,9 +1,9 @@
 Django==1.8.2
 django-adminfiles==1.0.1
-django-writingfield==1.1.8
+django-markitup==2.2.2
 djangoembed==0.1.1
-flickrapi==2.0
 gdata==2.0.18
+Markdown==2.6.2
 oauthlib==0.7.2
 Pillow==2.8.2
 pytz==2015.4

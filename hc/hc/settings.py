@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'blog',
     'adminfiles',
     'sorl.thumbnail',
-    'writingfield'
+    'markitup',
+    'markdown',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,8 +50,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    # writing field must come BEFORE MessageMiddleware
-    'writingfield.middleware.WritingFieldMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -114,3 +113,9 @@ STATICFILES_DIRS = ( os.path.join('static','blog'),
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'data' 'media')
+
+#MarkItUp!
+
+MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': False})
+MARKITUP_SET = 'markitup/sets/markdown'
+#MARKITUP_SKIN = 'markitup/skins/markitup'

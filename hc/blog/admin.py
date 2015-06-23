@@ -1,7 +1,7 @@
 from django.contrib import admin
 from blog.models import Post
-from blog.forms import PostForm
 from adminfiles.admin import FilePickerAdmin
+from markitup.widgets import AdminMarkItUpWidget
 
 class PostAdmin(FilePickerAdmin):
     #fields display on change list
@@ -17,6 +17,9 @@ class PostAdmin(FilePickerAdmin):
     #prepopulate the slug from the title
     prepopulated_fields = {"slug":("title",)}
     adminfiles_fields = ('content',)
-    form = PostForm
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        if db_field.name == 'content':
+            kwargs['widget'] = AdminMarkItUpWidget()
+        return super(PostAdmin, self).formfield_for_dbfield(db_field, **kwargs)
 
 admin.site.register(Post,PostAdmin)
