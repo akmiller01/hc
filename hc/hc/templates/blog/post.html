@@ -16,7 +16,6 @@
         <p class="description">
             {{post.description}}
         </p>
-        {% load adminfiles_tags %}
-        {{ post.content|render_uploads|safe}}
+        {{ post.content|safe}}
     </article>
     {% endblock %}

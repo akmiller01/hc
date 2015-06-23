@@ -38,10 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'blog',
-    'adminfiles',
-    'sorl.thumbnail',
-    'markitup',
-    'markdown',
+    'redactor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -114,8 +111,7 @@ STATICFILES_DIRS = ( os.path.join('static','blog'),
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'data' 'media')
 
-#MarkItUp!
+#REDACTOR
 
-MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': False})
-MARKITUP_SET = 'markitup/sets/markdown'
-#MARKITUP_SKIN = 'markitup/skins/markitup'
+REDACTOR_OPTIONS = {'lang': 'en'}
+REDACTOR_UPLOAD = 'media/'
