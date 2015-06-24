@@ -101,17 +101,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = ( os.path.join('static','blog'),
-                    )
+#STATICFILES_DIRS = ( os.path.join('static','blog'),
+#                    )
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'data' 'media')
 
 #REDACTOR
 
-REDACTOR_OPTIONS = {'lang': 'en'}
+REDACTOR_OPTIONS = {'lang': 'en','plugins':['fontcolor','fontfamily','fontsize','fullscreen','imagemanager','table','video']}
 REDACTOR_UPLOAD = 'media/'
+REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'

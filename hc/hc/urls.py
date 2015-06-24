@@ -25,4 +25,5 @@ urlpatterns = patterns('',
     url(r'^$','blog.views.index'),
     url(r'^(?P<slug>[\w\-]+)/$', 'blog.views.post'),
     url(r'^redactor/', include('redactor.urls'))
-) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+           ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
