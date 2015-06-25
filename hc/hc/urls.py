@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$','blog.views.index'),
     url(r'^(?P<slug>[\w\-]+)/$', 'blog.views.post'),
+    url(r'^tag/(?P<slug>[\w\-]+)/$', 'blog.views.tag'),
     url(r'^redactor/', include('redactor.urls'))
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
            ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -13,9 +13,15 @@
                 </time>
             </p>
         </header>
-        <p class="description">
-            {{post.description}}
+        {% if tags %}
+        <p class="tags">
+            <strong>Tags:</strong>
+            {% for tag in tags %}
+                <a href="{{tag.get_absolute_url}}">{{tag.name}}</a>
+            {% endfor %}
         </p>
+        {% endif %}
+        <strong>Content:</strong>
         {{ post.content|safe}}
     </article>
     {% endblock %}
