@@ -1,27 +1,47 @@
-{% extends 'base.html' %}
-     
+{% extends 'blog/base.html' %}
+
     {% block title %}{{post.title}}{% endblock %}
-     
+    {% load staticfiles %}
     {% block content %}
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('{% static "blog/img/post-bg.jpg" %}')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>{{post.title}}</h1>
+                        <h2 class="subheading">{{post.description}}</h2>
+                        <span class="meta">Posted on
+                            <time datetime="{{post.created|date:"c"}}">
+                                {{post.created|date}}
+                            </time>
+                        </span>
+                        {% if post.tags %}
+                        <span class="meta tags">
+                            Tags: 
+                            {% for tag in post.tags %}
+                                <a href="{{tag.get_absolute_url}}">{{tag.name}}</a>
+                            {% endfor %}
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Post Content -->
     <article>
-        <header>
-            <h1> {{post.title}} </h1>
-            <p>
-                Posted on
-                <time datetime="{{post.created|date:"c"}}">
-                {{post.created|date}}
-                </time>
-            </p>
-        </header>
-        {% if tags %}
-        <p class="tags">
-            <strong>Tags:</strong>
-            {% for tag in tags %}
-                <a href="{{tag.get_absolute_url}}">{{tag.name}}</a>
-            {% endfor %}
-        </p>
-        {% endif %}
-        <strong>Content:</strong>
-        {{ post.content|safe}}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    {{ post.content|safe}}
+                </div>
+            </div>
+        </div>
     </article>
+
+    <hr>
     {% endblock %}
+

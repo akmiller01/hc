@@ -5,13 +5,10 @@
             <title>
                 {% block title %}{% endblock %}
             </title>
-            {% load staticfiles %}
-            <link rel="stylesheet" type="text/css" href="{% static "blog/style.css" %}">
+            {% block head %}{% endblock %}
             </head>
         <body>
-            <div class="content">
-                {% block content %}
-                {% endblock %}
-            </div>
+            {% block content %}
+            {% endblock %}
         </body>
     </html>

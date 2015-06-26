@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+     
+    {% block title %}{{post.title}}{% endblock %}
+     
+    {% block content %}
+    <article>
+        <header>
+            <h1> {{post.title}} </h1>
+            <p>
+                Posted on
+                <time datetime="{{post.created|date:"c"}}">
+                {{post.created|date}}
+                </time>
+            </p>
+        </header>
+        {% if tags %}
+        <p class="tags">
+            <strong>Tags:</strong>
+            {% for tag in tags %}
+                <a href="{{tag.get_absolute_url}}">{{tag.name}}</a>
+            {% endfor %}
+        </p>
+        {% endif %}
+        <strong>Content:</strong>
+        {{ post.content|safe}}
+    </article>
+    {% endblock %}
