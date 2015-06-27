@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'blog',
     'redactor',
+    'random_image'
 )
 
 MIDDLEWARE_CLASSES = (

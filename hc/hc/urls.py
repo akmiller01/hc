@@ -17,14 +17,15 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic.base import RedirectView
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^about/', 'blog.views.about'),
     url(r'^$','blog.views.index'),
     url(r'^(?P<slug>[\w\-]+)/$', 'blog.views.post'),
-    url(r'^tag/(?P<slug>[\w\-]+)/$', 'blog.views.tag'),
     url(r'^redactor/', include('redactor.urls'))
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
            ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

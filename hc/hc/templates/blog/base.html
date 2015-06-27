@@ -18,6 +18,10 @@
         
             <!-- Custom CSS -->
             <link href="{% static "blog/css/clean-blog.min.css" %}" rel="stylesheet">
+            <style>
+                a{color: #2b9c40;}
+                a:hover, a:focus{color: #1e6d2c;}
+            </style>
         
             <!-- Custom Fonts -->
             <link href="{% static "blog/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
@@ -44,20 +48,17 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/">HC</a>
+                        <a class="navbar-brand" href="{% url 'blog.views.index' %}">hc</a>
                     </div>
         
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <li>
-                                <a href="/">Home</a>
+                                <a href="{% url 'blog.views.index' %}">Home</a>
                             </li>
                             <li>
-                                <a href="about.html">About</a>
-                            </li>
-                            <li>
-                                <a href="contact.html">Contact</a>
+                                <a href="{% url 'blog.views.about' %}">About</a>
                             </li>
                         </ul>
                     </div>
@@ -74,23 +75,23 @@
                         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                             <ul class="list-inline text-center">
                                 <li>
-                                    <a href="#">
+                                    <a href="https://twitter.com/honestlycurated">
                                         <span class="fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                                         </span>
                                     </a>
                                 </li>
-                                <li>
+                                <!--<li>
                                     <a href="#">
                                         <span class="fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                                         </span>
                                     </a>
-                                </li>
+                                </li>-->
                                 <li>
-                                    <a href="#">
+                                    <a href="https://github.com/akmiller01/honestly-curated">
                                         <span class="fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-github fa-stack-1x fa-inverse"></i>
