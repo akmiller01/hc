@@ -77,23 +77,23 @@
                         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                             <ul class="list-inline text-center">
                                 <li>
-                                    <a href="https://twitter.com/honestlycurated">
+                                    <a href="https://twitter.com/honestlycurated" target="_blank">
                                         <span class="fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                                         </span>
                                     </a>
                                 </li>
-                                <!--<li>
-                                    <a href="#">
+                                <li>
+                                    <a href="#" id="mailto">
                                         <span class="fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
-                                            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                            <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
                                         </span>
                                     </a>
-                                </li>-->
+                                </li>
                                 <li>
-                                    <a href="https://github.com/akmiller01/honestly-curated">
+                                    <a href="https://github.com/akmiller01/honestly-curated" target="_blank">
                                         <span class="fa-stack fa-lg">
                                             <i class="fa fa-circle fa-stack-2x"></i>
                                             <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -109,6 +109,15 @@
         
             <!-- jQuery -->
             <script src="{% static "blog/js/jquery.js" %}"></script>
+            <script>
+                $("#mailto").click( function(e) {
+                    e.preventDefault();
+                    var a = "honestlycurated", 
+                          b = "gmail";
+                
+                    window.open("mailto:" + a + "@" + b + ".com");
+                } );
+            </script>
         
             <!-- Bootstrap Core JavaScript -->
             <script src="{% static "blog/js/bootstrap.min.js" %}"></script>
