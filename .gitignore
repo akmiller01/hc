@@ -3,3 +3,5 @@ venv
 */*.pyc
 */*/*.pyc
 staticfiles
+datamedia
+hc/datamedia
