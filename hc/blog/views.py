@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from blog.models import Post
 from blog.models import Tag
+from blog.models import About
 from django.conf import settings
     
 
@@ -28,7 +29,8 @@ def index(request):
     return render(request,'blog/index.html',{'posts':posts,'tagParam':tagParam,'MEDIA_URL':settings.MEDIA_URL})
 
 def about(request):
-    return render(request,'blog/about.html',{'MEDIA_URL':settings.MEDIA_URL})
+    about = About.objects.all()[:1].get()
+    return render(request,'blog/about.html',{'about':about,'MEDIA_URL':settings.MEDIA_URL})
 
 def post(request,slug):
     #get the Post object

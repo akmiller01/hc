@@ -1,6 +1,7 @@
 from django.contrib import admin
 from blog.models import Post
 from blog.models import Tag
+from blog.models import About
 
 class PostAdmin(admin.ModelAdmin):
     #fields display on change list
@@ -21,7 +22,12 @@ class TagAdmin(admin.ModelAdmin):
     save_on_top = True
     #prepopulate the slug from the title
     prepopulated_fields = {"slug":("name",)}
+    
+class AboutAdmin(admin.ModelAdmin):
+    save_on_top = True
 
 admin.site.register(Post,PostAdmin)
 
 admin.site.register(Tag,TagAdmin)
+
+admin.site.register(About,AboutAdmin)
