@@ -10,10 +10,10 @@ class Tag(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
 
     class Meta:
-        ordering = ['-name']
+        ordering = ['name']
     
     def __str__(self):
-        return self.slug
+        return self.name
 
     def get_absolute_url(self):
         return reverse("blog.views.tag",args=[self.slug])
