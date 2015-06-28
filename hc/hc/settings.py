@@ -36,7 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'blog',
     'redactor',
-    'random_image'
+    'random_image',
+    'whitenoise'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -121,3 +122,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'data' 'media')
 REDACTOR_OPTIONS = {'lang': 'en','plugins':['fontcolor','fontfamily','fontsize','fullscreen','imagemanager','table','video']}
 REDACTOR_UPLOAD = 'media/'
 REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+#STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
