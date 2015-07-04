@@ -10,8 +10,7 @@ https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 import os
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "hc.settings")
-from whitenoise.django import DjangoWhiteNoise
 from django.core.wsgi import get_wsgi_application
+from dj_static import Cling
 
-application = get_wsgi_application()
-application = DjangoWhiteNoise(application)
+application = Cling(get_wsgi_application())

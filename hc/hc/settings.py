@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '3do0)%_$2g8y(!38*l%@2e6tsmc2ohe^4(o3z2h8y^j0qd+jsy'
+SECRET_KEY = '...'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'blog',
     'redactor',
     'random_image',
-    'whitenoise'
+    'storages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -124,7 +124,11 @@ REDACTOR_OPTIONS = {'lang': 'en','plugins':['fontcolor','fontfamily','fontsize',
 REDACTOR_UPLOAD = 'media/'
 REDACTOR_UPLOAD_HANDLER = 'redactor.handlers.DateDirectoryUploader'
 
-# Simplified static file serving.
-# https://warehouse.python.org/project/whitenoise/
-
-#STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+REDACTOR_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_ACCESS_KEY_ID = 'AKIAJ3DN3ERAWPK6SMSA'
+AWS_SECRET_ACCESS_KEY = '...'
+AWS_STORAGE_BUCKET_NAME = 'honestly-curated'
+AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'Cache-Control': 'max-age=94608000',
+    }
