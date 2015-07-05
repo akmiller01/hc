@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'redactor',
     'random_image',
     'storages',
+    'compressor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -115,6 +116,13 @@ ALLOWED_HOSTS = ['*']
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 STATIC_URL = '/static/'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'data' 'media')

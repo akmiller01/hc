@@ -12,9 +12,11 @@
             <meta name="author" content="">
             
             {% load staticfiles %}
+            {% load compress %}
             
             <link rel="shortcut icon" type="image/png" href="{% static "blog/favicon.ico" %}"/>
         
+            {% compress css %}
             <!-- Bootstrap Core CSS -->
             <link href="{% static "blog/css/bootstrap.min.css" %}" rel="stylesheet">
         
@@ -29,13 +31,15 @@
             <link href="{% static "blog/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
             <link href="{% static "blog/css/font-lora.css" %}" rel='stylesheet' type='text/css'>
             <link href="{% static "blog/css/font-open-sans.css" %}" rel='stylesheet' type='text/css'>
-        
+            {% endcompress %}
+            {% compress js %}
             <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
             <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
             <!--[if lt IE 9]>
                 <script src="{% static "blog/js/html5shiv.js" %}"></script>
                 <script src="{% static "blog/js/respond.min.js" %}"></script>
             <![endif]-->
+            {% endcompress %}
 
             </head>
         <body>
@@ -108,6 +112,7 @@
             </footer>
         
             <!-- jQuery -->
+            {% compress js %}
             <script src="{% static "blog/js/jquery.js" %}"></script>
             <script>
                 $("#mailto").click( function(e) {
@@ -135,6 +140,7 @@
                 ga('create', 'UA-64579799-1', 'auto');
                 ga('send', 'pageview');
             </script>
+            {% endcompress %}
 
         </body>
     </html>
