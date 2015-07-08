@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from redactor.fields import RedactorField
+from django.utils.html import strip_tags
 
 class About(models.Model):
     content = RedactorField(verbose_name=u'Text')
@@ -22,7 +23,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True,
                             max_length=255)
-    description = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, null=True, blank=True,help_text="Leave blank for auto-fill")
     author = models.CharField(max_length=255,default="Honestly Curated")
     content = RedactorField(verbose_name=u'Text')
     published = models.BooleanField(default=True)
@@ -37,3 +38,11 @@ class Post(models.Model):
     
     def get_absolute_url(self):
         return reverse('blog.views.post',args=[self.slug])
+    
+    def save(self, *args, **kwargs):
+        if self.content and (self.description is None or self.description == ""):
+            suffix = "..."
+            length = 100
+            content = strip_tags(self.content)
+            self.description = content if len(content) <= length else content[:length-len(suffix)].rsplit(' ', 1)[0] + suffix
+        super(Post, self).save(*args, **kwargs)
