@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 #SECRET_KEY = "h!x06_*qb@cy-7ty0$)9(&pbp9mw#^n)waxcnsy$rl6)f966zf"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Application definition
 
