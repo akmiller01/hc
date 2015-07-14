@@ -25,7 +25,7 @@ class TagAdmin(admin.ModelAdmin):
     
 class PageAdmin(admin.ModelAdmin):
     #fields display on change list
-    list_display = ['title']
+    list_display = ['title','order']
     #fields to filter the change list with
     list_filter = ['published']
     #fields to search in change list

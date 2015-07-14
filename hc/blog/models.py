@@ -7,8 +7,12 @@ class Page(models.Model):
     title = models.CharField(max_length=255, unique=True)
     subtitle = models.CharField(max_length=255, null=True, blank=True)
     slug = models.SlugField(max_length=255, unique=True)
+    order = models.IntegerField(unique=True)
     content = RedactorField(verbose_name=u'Text')
     published = models.BooleanField(default=True)
+    
+    class Meta:
+        ordering = ['order']
     
     def get_absolute_url(self):
         return reverse('blog.views.page',args=[self.slug])
