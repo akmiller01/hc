@@ -63,9 +63,11 @@
                             <li>
                                 <a href="{% url 'blog.views.index' %}">Home</a>
                             </li>
+                            {% for page in pages%}
                             <li>
-                                <a href="{% url 'blog.views.about' %}">About</a>
+                                <a href="{{page.get_absolute_url}}">{{page.title}}</a>
                             </li>
+                            {% endfor %}
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->

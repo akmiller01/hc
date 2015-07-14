@@ -3,8 +3,18 @@ from django.core.urlresolvers import reverse
 from redactor.fields import RedactorField
 from django.utils.html import strip_tags
 
-class About(models.Model):
+class Page(models.Model):
+    title = models.CharField(max_length=255, unique=True)
+    subtitle = models.CharField(max_length=255, null=True, blank=True)
+    slug = models.SlugField(max_length=255, unique=True)
     content = RedactorField(verbose_name=u'Text')
+    published = models.BooleanField(default=True)
+    
+    def get_absolute_url(self):
+        return reverse('blog.views.page',args=[self.slug])
+    
+    def __unicode__(self):
+        return u'%s' % self.title
 
 class Tag(models.Model):
     name = models.CharField(max_length=255, unique=True)
