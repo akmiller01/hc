@@ -21,8 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
-#SECRET_KEY = "h!x06_*qb@cy-7ty0$)9(&pbp9mw#^n)waxcnsy$rl6)f966zf"
+#SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = "h!x06_*qb@cy-7ty0$)9(&pbp9mw#^n)waxcnsy$rl6)f966zf"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'random_image',
     'storages',
     'compressor',
+    'djangosecure'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,6 +53,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'djangosecure.middleware.SecurityMiddleware'
 )
 
 ROOT_URLCONF = 'hc.urls'
@@ -143,3 +145,13 @@ AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
         'Cache-Control': 'max-age=94608000',
     }
 AWS_QUERYSTRING_AUTH = False
+
+#Security
+SECURE_SSL_REDIRECT = True
+SECURE_HSTS_SECONDS = 10
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_FRAME_DENY = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_HTTPONLY = True
