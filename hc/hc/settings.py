@@ -39,8 +39,7 @@ INSTALLED_APPS = (
     'redactor',
     'random_image',
     'storages',
-    'compressor',
-    'djangosecure'
+    'compressor'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -51,9 +50,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'djangosecure.middleware.SecurityMiddleware'
-)
+    'django.middleware.security.SecurityMiddleware'
+    )
 
 ROOT_URLCONF = 'hc.urls'
 
@@ -144,10 +142,3 @@ AWS_HEADERS = {  # see http://developer.yahoo.com/performance/rules.html#expires
         'Cache-Control': 'max-age=94608000',
     }
 AWS_QUERYSTRING_AUTH = False
-
-#Security
-SECURE_FRAME_DENY = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-SECURE_BROWSER_XSS_FILTER = True
-SESSION_COOKIE_SECURE = True
-SESSION_COOKIE_HTTPONLY = True
