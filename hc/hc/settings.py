@@ -103,6 +103,21 @@ if 'RDS_DB_NAME' in os.environ:
     }
     ADM_USR = os.environ['RDS_USERNAME']
     ADM_PSS = os.environ['RDS_PASSWORD']
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': ['hc/hc/templates'],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                ],
+            },
+        },
+    ]
 else:
     DATABASES = {
         'default': {
