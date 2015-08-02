@@ -22,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
-SECRET_KEY = "f#(xgah)@6g9pyvj9%44zue63uox2@jn#b6ugjirtju7p8-*fy"
+#SECRET_KEY = "f#(xgah)@6g9pyvj9%44zue63uox2@jn#b6ugjirtju7p8-*fy"
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Application definition
 
@@ -60,7 +60,7 @@ ROOT_URLCONF = 'hc.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['hc/templates'],
+        'DIRS': [os.path.join(BASE_DIR, "hc","templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,21 +103,6 @@ if 'RDS_DB_NAME' in os.environ:
     }
     ADM_USR = os.environ['RDS_USERNAME']
     ADM_PSS = os.environ['RDS_PASSWORD']
-    TEMPLATES = [
-        {
-            'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': ['hc/hc/templates'],
-            'APP_DIRS': True,
-            'OPTIONS': {
-                'context_processors': [
-                    'django.template.context_processors.debug',
-                    'django.template.context_processors.request',
-                    'django.contrib.auth.context_processors.auth',
-                    'django.contrib.messages.context_processors.messages',
-                ],
-            },
-        },
-    ]
 else:
     DATABASES = {
         'default': {
