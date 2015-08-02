@@ -1,5 +1,4 @@
 venv
-staticfiles
 *.pyc
 
 # Elastic Beanstalk Files
